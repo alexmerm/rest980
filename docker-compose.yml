@@ -10,13 +10,12 @@ services:
     ports:
       - "3000:3000"
     environment:
-      - BLID=<BLID>
-      - PASSWORD=<PW>
-      - ROBOT_IP=<IP>
-      - FIRMWARE_VERSION=2
+      #Set these in the .env file
+      - BLID
+      - PASSWORD
+      - ROBOT_IP
+      - FIRMWARE_VERSION
     restart: unless-stopped
-    networks:
-      - docker
     build: .
   php-nginx:
     container_name: php-nginx
@@ -28,8 +27,3 @@ services:
     ports:
       - "3001:8080"
     restart: unless-stopped
-    networks:
-      - docker
-networks:
-  docker:
-    external: true
